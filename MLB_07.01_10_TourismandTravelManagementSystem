@@ -1,0 +1,871 @@
+#include <iostream>
+#include<string.h> //string header file
+#define SIZE
+using namespace std;
+
+
+//IT21157332
+class RegisteredCustomer {
+    //attributes
+protected:
+  string custUsername;
+  string custPassword;
+
+private:
+    int packageID;
+
+    //methods
+public:
+    RegisteredCustomer();
+    RegisteredCustomer(string rcustUsername, string rcustPassword, int rpackageID);
+    void addregistercustomer();
+		void login();
+		void displayDetails();
+		void logout();
+		void checkLogindetails();
+		void packageview();
+
+};
+
+//IT21157332
+class UnregisteredCustomer {
+    //attributes
+protected:
+  string custID;
+  string custName;
+  string custEmail;
+  string custAddress;
+
+    //methods
+public:
+    UnregisteredCustomer();
+    UnregisteredCustomer(string ucustID, string ucustName, string ucustEmail, string ucustAddress);
+    void registercustomer();
+		void viewPackages();
+    void displayPackages();
+};
+
+//IT21157400
+class Administrator { //class declaration
+
+private: //set attributes
+    Administrator(int aadminID, string aadminName, string aadminEmail, string aadminUsername, string adminPassword);
+
+    int adminID{};
+    string adminName;
+    string adminEmail;
+    string adminUsername;
+    string adminPassword;
+
+    Package*admin[SIZE];
+
+public:
+    Administrator();//default constructor
+    Administrator(int aadminName,const string& aadminEmail,const string& aadminUsername,const string& adminPassword);//overload constructor
+    //methods
+    void addAdmin();
+    void editAdmin();
+    void deleteAdmin();
+    void updatePackage(Package*admin);
+      void updatePackage();
+    ~Administrator();   
+};
+
+ //IT21157400
+class Agent { //class declaration
+
+private: //set attributes
+    int agentID;
+    string agentName;
+    string agentEmail;
+    string agentUsername;
+    string agentPassword;
+
+public:   //methods
+    Agent();
+    Agent(int pagentId,string pagentName,string pagentContactNo,string pagentEmail,
+           string pagentUsername, string pagentPassword);
+    void addAgent();
+    void editAgent();
+    void deleteAgent();
+    ~Agent(); //clear method
+}; 
+
+//IT21156106
+class Agency {
+    //attributes
+private:
+    int agencyId;
+    string agencyName;
+    string agencyType;
+
+    //methods
+public:
+    Agency();
+    Agency(int aagencyId, string aagencyName, string aagencyType);
+    void TravelPayment();
+    void Budget();
+    void TravelRequsted();
+    void approveAgency();
+};
+
+//IT21156106
+class Package {
+    //attributes
+private:
+    int packageId;
+    string packageName;
+    string packageDescription;
+    string packageType;
+    float packagePrice;
+
+    //methods
+public:
+    Package();
+    Package(int packId, string packName, string packType, string packDescription, float packPrice);
+    void addPackage();
+    void editPackage();
+    void deletePackage();
+    void displaySelectedPackage();
+};
+
+//IT21106910
+class Transportation {
+   //attributes
+   private:
+     int transportation_id;
+     int transportation_tourid;
+     string transportation_name;
+     string v_type;
+     string v_description;
+
+   //methods
+   public:
+     Transportation();
+     Transportation(int ttransportation_id, int ttransportation_tourid, string ttransportation_name, string tv_type, string tv_description);
+     void addTransportation();
+     void editTransportation();
+     void deleteTransportation();
+     void updateTransportation();
+     void saveTransportation();
+     void searchTransportation();
+     void displayTransportationDetails();
+};
+
+//IT21106910
+class Booking{
+   //attributes
+   private:
+     int booking_id;
+     int booking_hotelid;
+     string booking_title;
+     string booking_type;
+     string booking_date;
+     string booking_description;
+
+   //methods
+   public:
+     Booking();
+     Booking(int bbooking_id, int bbooking_hotelid, string bbooking_title, string bbooking_type, string bbooking_date, string bbooking_description);
+     void addBooking();
+     void editBooking();
+     void deleteBooking();
+     void updateBooking();
+     void saveBooking();
+     void searchBooking();
+     void displayBookingDetails();
+     float calcbooking_total();
+};
+
+//IT21155970
+class Hotel {
+    //attributes
+private:
+    int HotelID;
+    string  HotelName;
+    string  HotelType;
+    string  HotelAddress;  
+	string  HotelDescription; 
+    
+    //methods
+public:
+    Hotel();
+    Hotel(int HID,string HName,string  Htype,string HAddress, string HDescription);
+    void addHotel();
+    void editHotel();
+    void deleteHotel();
+    void updateHotel();
+    void saveHotel();
+    void searchHotel();
+};
+      
+//IT21155970
+class Tour {
+    //attributes
+private:
+    int TourID;
+    string TourName;
+    string TourType;
+    string TourPlace;
+    string TourDescription; 
+    
+    //methods
+public:
+    Tour();
+    Tour(int TID, string TName, string TType, string TPlace, string TDescription);
+    void addTour();
+    void editTour();
+    void deleteTour();
+    void updateTour();
+    void saveTour();
+    void searchTour();
+};
+//end of the creating classes 
+
+//IT21157332
+//default constructor
+RegisteredCustomer::RegisteredCustomer()
+{
+    custUsername = " ";
+    custPassword = " ";
+    packageID = " ";
+}
+
+//overload constructor
+RegisteredCustomer::RegisteredCustomer(string rcustUsername,string rcustPassword)
+{
+  custUsername = rcustUsername;
+  custPassword = rcustPassword;
+  packageID = rpackageID;
+ 
+}
+void RegisteredCustomer::addRegisteredCustomer(){
+}
+void RegisteredCustomer::login(){
+}
+void RegisteredCustomer::displayDetails(){
+}
+void RegisteredCustomer::logout(){
+}
+void RegisteredCustomer::checkLogindetails(){
+}
+void RegisteredCustomer::packageview(){
+}
+
+//IT21157332
+//default constructor
+UnregisteredCustomer::UnregisteredCustomer()
+{
+  custID = 0;
+  custName = " ";
+  custEmail = " ";
+  custAddress = " ";
+}
+
+//overload constructor
+UnregisteredCustomer::UnregisteredCustomer(string ucustID, string ucustName, string ucustEmail, string ucustAddress)
+{
+  custID = ucustID;
+  custName = ucustName;
+  custEmail = ucustEmail;
+  custAddress = ucustAddress;
+}
+void UnregisteredCustomer::registercustomer(){
+}
+void UnregisteredCustomer::viewPackages(){
+}
+void UnregisteredCustomer::displayPackages(){
+}
+      
+//IT21157400 
+Administrator::Administrator() {
+    adminID=0;
+    adminName="";
+    adminEmail="";
+    adminUsername="";
+
+}
+
+Administrator::Administrator(int aadminID,string aadminName, string aadminEmail, string aadminUsername, string aadminPassword) {
+    adminID=aadminID;
+    adminName=std::move(aadminName);
+    adminEmail=std::move(aadminEmail);
+    adminUsername=std::move(aadminUsername);
+    adminPassword=std::move(aadminPassword);
+}
+
+//implement Method
+void Administrator::addAdmin() {}
+void Administrator::deleteAdmin() {}
+void Administrator::editAdmin() {}
+void Administrator::updatePackage() {}
+
+ Administrator::Administrator(int aadminName, const string& aadminEmail, const string& aadminUsername, const string& adminPassword) {
+
+ }
+
+ void Administrator::updatePackage(Package *admin) {
+
+ }
+
+ Administrator::~Administrator(){}
+
+//IT21157400     
+Agent::Agent()
+{
+    agentID= 0;
+    agentName = "";
+    agentContactNo = "";
+    agentEmail = "";
+    agentUsername = "";
+    agentPassword = "";
+}
+
+Aagent::Aagent(int aagentID,string aagentName, string aagentContactNo, string aagentEmali ,string aagentUsername, string aagentPassword)
+{
+    agentID = aagentID;
+    agentName = aagentName;
+    agentContactNo = aagentContactNo;
+    agentEmail = aagentEmali;
+    agentUsername = aagentUsername;
+    agentPassword = aagentPassword;
+}
+
+void Agent::addAgent() {}
+void Agent::deleteAgent() {}
+void Agent::editAgent() {}
+
+Agent::~Agent() {}
+
+//IT21156106
+Agency::Agency()
+{
+    agencyId= 0;
+    agencyName = "";
+    agencyType = "";
+}
+
+//overload constructor
+Agency::Agency(int aagencyId, string aagencyName, string aagencyType)
+{
+    agencyId = aagencyId;
+    agencyName = aagencyName;
+    agencyType = aagencyType;
+}
+
+void Agency::TravelPayment() {
+    
+}
+void Agency::Budget() {
+    
+}
+void Agency::TravelRequsted() {
+   
+}
+void Agency::approveAgency() {
+    
+}
+
+//IT21155106
+Package::Package()
+{
+    packageId= 0;
+    packageName = "";
+    packageType = "";
+    packageDescription = "";
+    packagePrice = 0;
+}
+
+Package::Package(int packId, string packName, string packType, string packDescription, float packPrice)
+{
+    packageId = packId;
+    packageName = packName;
+    packageType = packType;
+    packageDescription = packDescription;
+    packagePrice = packPrice;
+}
+void Package::addPackage() {
+    cout<<"Package Added"<<endl;
+}
+void Package::editPackage() {
+    cout<<"Edited"<<endl;
+}
+void Package::deletePackage() {
+    cout<<"Deleted"<<endl;
+}
+void Package::displaySelectedPackage() {
+    cout<<"Display Package"<<endl;
+} 
+
+//IT21106910
+//default constructor
+Transportation::Transportation()
+{
+  transportation_id = 0;
+  transportation_tourid = 0;
+  transportation_name = "";
+  v_type = "";
+  v_description = "";
+}
+
+//overload constructor
+Transportation::Transportation(int ttransportation_id, int ttransportation_tourid, string ttransportation_name, string tv_type, string tv_description)
+{
+  transportation_id = ttransportation_id;
+  transportation_tourid = ttransportation_tourid;
+  transportation_name = ttransportation_name;
+  v_type = tv_type;
+  v_description = tv_description;
+}
+
+void Transportation::addTransportation(){
+}
+void Transportation::editTransportation(){
+}
+void Transportation::deleteTransportation(){
+}
+void Transportation::updateTransportation(){
+}
+void Transportation::saveTransportation(){
+}
+void Transportation::searchTransportation(){
+}
+void Transportation::displayTransportationDetails(){
+}
+      
+//IT21106910
+Booking::Booking()
+{
+  booking_id = 0;
+  booking_hotelid = 0;
+  booking_title = "";
+  booking_type = "";
+  booking_date = "";
+  booking_description = "";
+}
+
+Booking::Booking(int bbooking_id, int bbooking_hotelid, string bbooking_title, string bbooking_type, string bbooking_date, string bbooking_description)
+{
+  booking_id = bbooking_id;
+  booking_hotelid = bbooking_hotelid;
+  booking_title = bbooking_title;
+  booking_type = bbooking_type;
+  booking_date = bbooking_date;
+  booking_description = bbooking_description;
+}
+
+void Booking::addBooking(){
+}
+void Booking::editBooking(){
+}
+void Booking::deleteBooking(){
+}
+void Booking::updateBooking(){
+}
+void Booking::saveBooking(){
+}
+void Booking::searchBooking(){
+}
+void Booking::displayBookingDetails(){
+}
+float Booking::calcbooking_total(){
+}
+
+//IT21155970
+Hotel::Hotel()
+{
+    HotelID= 0;
+    HotelName = "";
+    HotelType = "";
+    HotelAddress = "";
+    HotelDescription = "";
+    
+}
+
+Hotel::Hotel(int HID,string HName,string  Htype,string HAddress, string HDescription)
+{
+	HotelID =HID ;
+    HotelName=HName;
+    HotelType=Htype;
+    HotelAddress=HAddress;
+    HotelDescription=HDescription; 
+    
+}
+void Hotel::addHotel() 
+{
+}
+
+void Hotel::editHotel()
+{
+}
+void Hotel::deleteHotel()
+{
+}
+void Hotel::updateHotel()
+{
+}
+void Hotel::saveHotel() 
+{
+}
+void Hotel::searchHotel()
+{
+}
+
+//IT21155970 
+Tour::Tour()
+{
+    TourID= 0;
+    TourName = "";
+    TourType = "";
+    TourPlace = "";
+    TourDescription = "";
+    
+}
+Tour::Tour(int TID, string TName, string TType, string TPlace, string TDescription)
+{
+	TourID =TID ;
+    TourName=TName;
+    TourType=TType;
+    TourPlace=TPlace;
+    TourDescription=TDescription; 
+    
+}
+void Tour::addTour()
+ {
+ }
+
+void Tour::editTour()
+ {
+ }
+void Tour::deleteTour()
+ {
+ }
+void Tour::updateTour()
+ {
+ }
+void Tour::saveTour()
+ {
+ }
+void Tour::searchTour()
+ {
+ }
+
+
+int main() {
+//IT21157332
+    RegisteredCustomer r1, r2, r3;
+
+  //calling addRegisteredCustomer() method
+    r1.addRegisteredCustomer();
+    r2.addRegisteredCustomer();
+    r3.addRegisteredCustomer();
+
+  //calling login() method
+    r1.login();
+    r2.login();
+    r3.login();
+  
+	//calling displayDetails() method
+    r1.displayDetails();
+    r2.displayDetails();
+    r3.displayDetails();
+  
+	//calling logout() method
+    r1.logout();
+    r2.logout();
+    r3.logout();
+  
+	//calling checkLogindetails() method
+    r1.checkLogindetails();
+    r2.checkLogindetails();
+    r3.checkLogindetails();
+  
+	//calling packageview() method 
+    r1.packageview()();
+    r2.packageview()();
+    r3.packageview()();
+
+//IT21157332
+    RegisteredCustomer r1, r2, r3;
+
+  //calling registercustomer() method
+    r1.registercustomer();
+    r2.registercustomer();
+    r3.registercustomer();
+  
+  //calling viewPackages() method
+    r1.viewPackages();
+    r2.viewPackages();
+    r3.viewPackages();
+  
+  //calling displayPackages() method
+    r1.displayPackages();
+    r2.displayPackages();
+    r3.displayPackages();
+
+//IT21157400
+Administrator admin1,admin2;
+
+    //calling addAdmin() method
+        admin1.addAdmin();
+        admin2.addAdmin();
+
+    //calling editAdmin() method
+        admin1.editAdmin();
+        admin2.editAdmin();
+
+    //calling deleteAdmin() method
+        admin1.deleteAdmin();
+        admin2.deleteAdmin();
+
+    //calling updatePackage() method
+        admin1.updatePackage();
+        admin2.updatePackage();
+
+//IT21157400
+Agent agnt1,agnt2,agnt3;
+
+    //calling addAgency() method
+    agnt1.addAgent();
+    agnt2.addAgent();
+    agnt3.addAgent();
+
+    //calling addAgency() method
+    agnt1.editAgent();
+    agnt2.editAgent();
+    agnt3.editAgent();
+
+    //calling addAgency() method
+    agnt1.deleteAgent();
+    agnty2.deleteAgent();
+    agnty3.deleteAgent();
+
+//IT21156106 
+Agency agency1,agency2,agency3;
+
+          //calling TravelPayment() method
+          agency1.TravelPayment();
+          agency2.TravelPayment();
+          agency3.TravelPayment();
+      
+          //calling Budget() method
+          agency1.Budget();
+          agency2.Budget();
+          agency3.Budget();
+      
+          //calling TravelRequsted() method
+          agency1.TravelRequsted();
+          agency2.TravelRequsted();
+          agency3.TravelRequsted();
+        
+          //calling approveAgency() method
+          agency1.approveAgency();
+          agency2.approveAgency();
+          agency3.approveAgency();
+
+//IT21156106
+Package pack1,pack2,pack3;
+
+    //calling addPackage method
+    pack1.addPackage();
+    pack2.addPackage();
+    pack3.addPackage();
+
+    //calling editPackage() method
+    pack1.editPackage();
+    pack2.editPackage();
+    pack3.editPackage();
+
+    //calling deletePackage() method
+    pack1.deletePackage();
+    pack2.deletePackage();
+    pack3.deletePackage();
+
+    //calling displaySelectedPackage() method
+    pack1.displaySelectedPackage();
+    pack2.displaySelectedPackage();
+    pack3.displaySelectedPackage();
+
+//IT21106910
+Transportation t1, t2, t3;
+
+  //calling addTransportation() method
+  t1.addTransportation();
+  t2.addTransportation();
+  t3.addTransportation();
+
+  //calling editTransportation() method
+  t1.editTransportation();
+  t2.editTransportation();
+  t3.editTransportation();
+
+  //calling deleteTransportation() method
+  t1.deleteTransportation();
+  t2.deleteTransportation();
+  t3.deleteTransportation();
+  
+  //calling updateTransportation() method
+  t1.updateTransportation();
+  t2.updateTransportation();
+  t3.updateTransportation();
+  
+  //calling saveTransportation() method
+  t1.saveTransportation();
+  t1.saveTransportation();
+  t1.saveTransportation();
+  
+  //calling searchTransportation() method
+  t1.searchTransportation();
+  t2.searchTransportation();
+  t3.searchTransportation();
+  
+  //calling displayTransportationDetails() method
+  t1.displayTransportationDetails();
+  t2.displayTransportationDetails();
+  t3.displayTransportationDetails();
+  
+//IT21106910
+Booking b1, b2, b3;
+
+  //calling addBooking() method
+  b1.addBooking();
+  b2.addBooking();
+  b3.addBooking();
+
+  //calling editBooking() method
+  b1.editBooking();
+  b2.editBooking();
+  b3.editBooking();
+
+  //calling deleteBooking() method
+  b1.deleteBooking();
+  b2.deleteBooking();
+  b3.deleteBooking();
+
+  //calling updateBooking() method
+  b1.updateBooking();
+  b2.updateBooking();
+  b3.updateBooking();
+
+  //calling saveBoking()method
+  b1.saveBooking();
+  b2.saveBooking();
+  b3.saveBooking();
+
+  //calling searchBookng() method
+  b1.searchBooking();
+  b2.searchBooking();
+  b3.searchBooking();
+
+  //calling displayBookingDetails() method
+  b1.displayBookingDetails();
+  b2.displayBookingDetails();
+  b3.dispalyBookingDetails();
+  
+  for(int i = 1; i <= 3; i++)
+    {
+      cout << "Total Amount for booking" << i << "=" << calcbooking_total() << endl; 
+    }
+
+//IT21155970
+Hotel H1, H2, H3;
+
+    //calling addHotel method
+    H1.addHotel();
+    H2.addHotel();
+    H3.addHotel();
+    //calling editHotel method
+	H1.editHotel();
+	H2.editHotel();
+	H3.editHotel();
+	//calling deleteHotel method
+	H1.deleteHotel();
+	H2.deleteHotel();
+	H3.deleteHotel();
+	  
+	//calling updateHotel method
+	H1.updateHotel();
+	H2.updateHotel();
+	H3.updateHotel();
+	  
+	//calling saveHotelmethod
+	H1.saveHotel();
+	H2.saveHotel();
+	H3.saveHotel();
+	  
+	//calling searchHotel method
+	H1.searchHotel();
+	H2.searchHotel();
+	H3.searchHotel();
+
+//IT21155970
+Tour T1, T2, T3;
+
+  //calling addTour method
+  T1.addTour();
+  T2.addTour();
+  T3.addTour();
+    //calling editTour method
+	T1.editTour();
+	T2.editTour();
+	T3.editTour();
+	//calling deleteTour method
+	T1.deleteTour();
+	T2.deleteTour();
+	T3.deleteTour();
+	  
+	//calling updateTour method
+	T1.updateTour();
+	T2.updateTour();
+	T3.updateTour();
+	  
+	//calling saveTour method
+	T1.saveTour();
+	T2.saveTour();
+	T3.saveTour();
+	  
+	//calling searchTour method
+	T1.searchTour();
+	T2.searchTour();
+	T3.searchTour();
+
+Transportation t1, t2, t3;
+
+  //calling addTransportation() method
+  t1.addTransportation();
+  t2.addTransportation();
+  t3.addTransportation();
+
+  //calling editTransportation() method
+  t1.editTransportation();
+  t2.editTransportation();
+  t3.editTransportation();
+
+  //calling deleteTransportation() method
+  t1.deleteTransportation();
+  t2.deleteTransportation();
+  t3.deleteTransportation();
+  
+  //calling updateTransportation() method
+  t1.updateTransportation();
+  t2.updateTransportation();
+  t3.updateTransportation();
+  
+  //calling saveTransportation() method
+  t1.saveTransportation();
+  t1.saveTransportation();
+  t1.saveTransportation();
+  
+  //calling searchTransportation() method
+  t1.searchTransportation();
+  t2.searchTransportation();
+  t3.searchTransportation();
+  
+  //calling displayTransportationDetails() method
+  t1.displayTransportationDetails();
+  t2.displayTransportationDetails();
+  t3.displayTransportationDetails();
+
+
+  return 0;
+}
